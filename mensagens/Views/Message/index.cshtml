@@ -1,0 +1,31 @@
+@model List<Bot.Models.Message>
+<h2>Send a Message</h2>
+<form asp-action="Index" method="post">
+    <div>
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" />
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" />
+    </div>
+    <div>
+        <label for="Content">Message:</label>
+        <input type="text" id="Content" name="Content" />
+    </div>
+    <button type="submit">Send</button>
+</form>
+@if (Model != null && Model.Count > 0)
+{
+    <h3>Received Messages:</h3>
+    <ul>
+        @foreach (var msg in Model)
+        {
+            <li>
+                <p><strong>Name:</strong> @msg.Name</p>
+                <p><strong>Email:</strong> @msg.Email</p>
+                <p><strong>Message:</strong> @msg.Content</p>
+            </li>
+        }
+    </ul>
+}
